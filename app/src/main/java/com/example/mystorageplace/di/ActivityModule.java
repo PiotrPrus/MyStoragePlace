@@ -6,6 +6,7 @@ import com.example.mystorageplace.ui.main.MainModule;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
+@Module
 public abstract class ActivityModule {
 
     @ContributesAndroidInjector(modules = {MainModule.class})
