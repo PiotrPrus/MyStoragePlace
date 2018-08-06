@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Storage Place</string>
+    <string name="storage_item_image_description">Storage item image</string>
 </resources>
