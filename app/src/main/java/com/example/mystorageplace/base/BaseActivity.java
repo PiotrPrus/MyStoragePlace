@@ -22,5 +22,9 @@ public abstract class BaseActivity<VDB extends ViewDataBinding> extends DaggerAp
 
         binding = DataBindingUtil.setContentView(this, getLayoutRes());
         binding.setLifecycleOwner(this);
+        start();
+    }
+
+    public void start() {
     }
 }
