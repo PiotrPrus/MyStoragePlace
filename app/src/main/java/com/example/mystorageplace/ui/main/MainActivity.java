@@ -1,9 +1,8 @@
 package com.example.mystorageplace.ui.main;
 
 import android.arch.lifecycle.ViewModelProvider;
-import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.example.mystorageplace.R;
 import com.example.mystorageplace.base.BaseVMActivity;
@@ -19,6 +18,7 @@ public class MainActivity extends BaseVMActivity<MainViewModel, ActivityMainBind
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding.storageRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     }
 
     @Override

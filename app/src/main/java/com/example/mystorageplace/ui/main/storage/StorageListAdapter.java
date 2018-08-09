@@ -10,11 +10,12 @@ import com.example.mystorageplace.R;
 import com.example.mystorageplace.data.model.Storage;
 import com.example.mystorageplace.databinding.StorageItemBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StorageListAdapter extends RecyclerView.Adapter<StorageListAdapter.ViewHolder> {
 
-    private List<Storage> storageList;
+    private List<Storage> storageList = new ArrayList<>();
 
     @NonNull
     @Override

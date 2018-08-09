@@ -8,16 +8,15 @@
             type="com.example.mystorageplace.ui.main.MainViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.main.MainActivity">
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/storage_screen_RV"
+            android:id="@+id/storage_recycler_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:adapter="@{viewModel.getStorageListAdapter()}"
+            app:adapter="@{viewmodel.getStorageListAdapter()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +30,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/storage_screen_RV" />
+            app:layout_constraintTop_toBottomOf="@+id/storage_recycler_view" />
     </android.support.constraint.ConstraintLayout>
 </layout>

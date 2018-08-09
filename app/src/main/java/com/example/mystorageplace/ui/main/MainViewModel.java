@@ -1,8 +1,8 @@
 package com.example.mystorageplace.ui.main;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
+import android.databinding.BindingAdapter;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.example.mystorageplace.base.BaseViewModel;
@@ -22,10 +22,18 @@ public class MainViewModel extends BaseViewModel {
     private static final String TAG = MainViewModel.class.getSimpleName();
 
     private DatabaseReference mDatabase;
-    private StorageListAdapter adapter = new StorageListAdapter();
+    public StorageListAdapter storageListAdapter = new StorageListAdapter();
 
     public MainViewModel() {
         mDatabase = FirebaseDatabase.getInstance().getReference();
+    }
+
+    public StorageListAdapter getStorageListAdapter() {
+        return storageListAdapter;
+    }
+
+    public void setStorageListAdapter(StorageListAdapter storageListAdapter) {
+        this.storageListAdapter = storageListAdapter;
     }
 
     public void fetchStorages() {
@@ -33,7 +41,7 @@ public class MainViewModel extends BaseViewModel {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    adapter.setData(toStorageList(dataSnapshot));
+                    storageListAdapter.setData(toStorageList(dataSnapshot));
                 }
             }
 
@@ -60,5 +68,10 @@ public class MainViewModel extends BaseViewModel {
     private void writeTestData() {
         Storage storage = new Storage("piwnica", new ArrayList<>());
         mDatabase.child("storage-places").setValue(storage);
+    }
+
+    @BindingAdapter("adapter")
+    public static void setAdapter(RecyclerView view, RecyclerView.Adapter<RecyclerView.ViewHolder> adapter) {
+        view.setAdapter(adapter);
     }
 }
