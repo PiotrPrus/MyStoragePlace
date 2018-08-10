@@ -14,12 +14,11 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/storage_recycler_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:adapter="@{viewmodel.getStorageListAdapter()}"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <Button
             android:id="@+id/storage_view_button"
@@ -27,9 +26,9 @@
             android:layout_height="wrap_content"
             android:onClick="@{() -> viewmodel.addNewStorage()}"
             android:text="Add new storage"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/storage_recycler_view" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/storage_recycler_view"/>
+
     </android.support.constraint.ConstraintLayout>
 </layout>

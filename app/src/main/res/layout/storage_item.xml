@@ -4,14 +4,15 @@
 
     <data>
         <variable
-            name="viewModel"
-            type="com.example.mystorageplace.ui.main.storage.StorageViewModel" />
+            name="storage"
+            type="com.example.mystorageplace.data.model.Storage" />
     </data>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="6dp">
+        android:elevation="6dp"
+        android:layout_margin="8dp">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -33,7 +34,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/storage_item_image"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="@{storage.storageName}"/>
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>

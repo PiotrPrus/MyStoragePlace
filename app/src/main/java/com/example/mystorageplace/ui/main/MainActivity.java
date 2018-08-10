@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import com.example.mystorageplace.R;
 import com.example.mystorageplace.base.BaseVMActivity;
 import com.example.mystorageplace.databinding.ActivityMainBinding;
+import com.example.mystorageplace.ui.main.storage.StorageListAdapter;
 
 public class MainActivity extends BaseVMActivity<MainViewModel, ActivityMainBinding> {
 
@@ -19,6 +20,9 @@ public class MainActivity extends BaseVMActivity<MainViewModel, ActivityMainBind
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding.storageRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        StorageListAdapter adapter = new StorageListAdapter();
+        binding.storageRecyclerView.setAdapter(adapter);
+        viewModel.setStorageListAdapter(adapter);
     }
 
     @Override

@@ -25,8 +25,9 @@ public class StorageListAdapter extends RecyclerView.Adapter<StorageListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-        viewHolder.bind(storageList.get(position));
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+//        viewHolder.bind(storageList.get(position));
+        holder.binding.setStorage(storageList.get(position));
     }
 
     @Override
@@ -41,16 +42,10 @@ public class StorageListAdapter extends RecyclerView.Adapter<StorageListAdapter.
 
     class ViewHolder extends RecyclerView.ViewHolder{
         private final StorageItemBinding binding;
-        private StorageViewModel viewModel = new StorageViewModel();
 
-        public ViewHolder(StorageItemBinding binding) {
+        public ViewHolder(final StorageItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-        }
-
-        public void bind(Storage storage){
-            viewModel.bind(storage);
-            binding.setViewModel(viewModel);
         }
     }
 }
