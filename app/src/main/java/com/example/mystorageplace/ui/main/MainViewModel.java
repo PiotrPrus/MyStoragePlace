@@ -1,11 +1,13 @@
 package com.example.mystorageplace.ui.main;
 
+import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.mystorageplace.base.BaseViewModel;
 import com.example.mystorageplace.data.model.Storage;
 import com.example.mystorageplace.ui.main.storage.StorageListAdapter;
+import com.example.mystorageplace.utils.SingleLiveEvent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,6 +23,11 @@ public class MainViewModel extends BaseViewModel {
 
     private DatabaseReference mDatabase;
     public StorageListAdapter storageListAdapter;
+    private SingleLiveEvent _openStorageCreationDialog = new SingleLiveEvent();
+
+    public LiveData openStorageCreationDialog() {
+        return _openStorageCreationDialog;
+    }
 
     public MainViewModel() {
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -56,11 +63,15 @@ public class MainViewModel extends BaseViewModel {
     }
 
     public void addNewStorage() {
-        writeTestData();
+        openDialog();
     }
 
-    private void writeTestData() {
-        Storage storage = new Storage("piwnica", new ArrayList<>());
+    private void openDialog() {
+        _openStorageCreationDialog.call();
+    }
+
+    public void writeToFirebase(String storageName){
+        Storage storage = new Storage(storageName, new ArrayList<>());
         mDatabase.child("storage-places").setValue(storage);
     }
 }
